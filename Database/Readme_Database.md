@@ -1,3 +1,0 @@
-# Digital_Cricket_Scouting_System Database
-
-POSTGRESQL
