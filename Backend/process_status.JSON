@@ -1,0 +1,132 @@
+{
+  "success": {
+    "status_type": 0,
+    "status_message": "Success.",
+    "status": {
+      "generic": {
+        "status_code": "100",
+        "status_desc": "GENERIC SUCCESS."
+      },
+      "batsmanPred_succ": {
+        "status_code": "200",
+        "status_desc": "Batsman prediction successful."
+      },
+      "bowlerpred_succ": {
+        "status_code": "200",
+        "status_desc": "Bowler Prediction Successful."
+      },
+      "WicketKeeperPred_success": {
+        "status_code": "200",
+        "status_desc": "Wicketkeeper Prediction Successful."
+      },
+      "dbcon_suc": {
+        "status_code": "200",
+        "status_desc": "Database Connection Successful."
+      },
+      "res_pass_succ": {
+        "status_code": "200",
+        "status_desc": "Password successfully inserted"
+      },
+      "table_exist": {
+        "status_code": "200",
+        "status_desc": "Table Exist in Database ."
+      },
+      "create_table_success": {
+        "status_code": "200",
+        "status_desc": "Table Created in Database ."
+      },
+      "drop_table_success": {
+        "status_code": "200",
+        "status_desc": "Table Dropped in Database ."
+      },
+      "fetch_data_success": {
+        "status_code": "200",
+        "status_desc": "Data fetched successfully from PostgreSQL table."
+      },
+      "insert_batsmandata_success": {
+        "status_code": "200",
+        "status_desc": "Batsman Data inserted successfully into PostgreSQL table."
+      },
+      "db_close_success": {
+        "status_code": "200",
+        "status_desc": "PostgreSQL Database connection is closed."
+      },
+      "update_table_success": {
+        "status_code": "200",
+        "status_desc": "Updated data successfully in Database."
+      }
+
+    }
+   },
+  "error": {
+    "status_type": 1,
+    "status_message": "Error",
+    "status": {
+      "Generic": {
+        "status_code": "101",
+        "status_desc": "GENERIC ERROR."
+      },
+      "batsmanPred_fail": {
+        "status_code": "201",
+        "status_desc": "Batsman Prediction Unsuccessful."
+      },
+      "bowlerPred_fail": {
+        "status_code": "211",
+        "status_desc": "Bowler Prediction Unsuccessful."
+      },
+      "WicketKeeperPred_fail": {
+        "status_code": "200",
+        "status_desc": "Bowler Prediction Unsuccessful."
+      },
+      "dbcon_fail": {
+        "status_code": "221",
+        "status_desc": "Database Connection Failed."
+      },
+      "json_in_fail": {
+        "status_code": "231",
+        "status_desc": "json header input entered in wrong format. Check JSON."
+      },
+      "notable": {
+        "status_code": "241",
+        "status_desc": "Table doesn't exist in database."
+      },
+      "res_pass_fail": {
+        "status_code": "241",
+        "status_desc": "Password insertion failed. User doesn't exist."
+      },
+      "drop_table_failure": {
+        "status_code": "251",
+        "status_desc": "Dropping table failed."
+      },
+      "create_table_failure": {
+        "status_code": "251",
+        "status_desc": "Creating table failed."
+      },
+      "DB_Error": {
+        "status_code": "261",
+        "status_desc": "PostgreSQL Error."
+      },
+      "fetch_data_failure": {
+        "status_code": "261",
+        "status_desc": "Error while fetching data from PostgreSQL table."
+      },
+      "insert_batsmandata_failure": {
+        "status_code": "261",
+        "status_desc": "Insert batsman data failed."
+      },
+      "db_close_failure": {
+        "status_code": "271",
+        "status_desc": "Error while closing PostgreSQL Database."
+      },
+      "update_table_failure": {
+        "status_code": "271",
+        "status_desc": "Error while Updating data in Database."
+      }
+    }
+   },
+      "default": {
+        "status_type": "-1",
+        "status_message": "nothing to display"
+      }
+
+    }
