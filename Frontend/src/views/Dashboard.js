@@ -2,27 +2,14 @@ import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 
 // reactstrap components
 import {
   Button,
   ButtonGroup,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  Label,
-  FormGroup,
-  Input,
-  Table,
-  Row,
-  Col,
-  UncontrolledTooltip,
+  Card, CardBody, CardHeader, CardTitle, Col, DropdownItem, DropdownMenu, DropdownToggle, FormGroup,
+  Input, Label, Row, Table, UncontrolledDropdown, UncontrolledTooltip
 } from "reactstrap";
 
 // core components
@@ -30,7 +17,7 @@ import {
   chartExample1,
   chartExample2,
   chartExample3,
-  chartExample4,
+  chartExample4
 } from "variables/charts.js";
 
 function Dashboard(props) {

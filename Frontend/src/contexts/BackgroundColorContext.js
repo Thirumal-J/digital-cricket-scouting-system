@@ -8,5 +8,5 @@ export const backgroundColors = {
 
 export const BackgroundColorContext = createContext({
   color: backgroundColors.blue,
-  changeColor: (color) => {},
+  changeColor: (color) => { },
 });

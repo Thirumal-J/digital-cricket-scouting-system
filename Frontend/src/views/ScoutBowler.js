@@ -1,22 +1,13 @@
 import axios from 'axios';
-import React, {useState } from "react";
+import { useState } from "react";
 // reactstrap components
+import bowler from "assets/img/bowler.jpg";
 import {
   Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  CardImg,
-  Label,
-  Form,
+  Card, CardBody, CardHeader, CardImg, CardTitle, Col, Form,
   FormGroup,
-  Input,
-  Table,
-  Row,
-  Col,
+  Input, Label, Row, Table
 } from "reactstrap";
-import bowler from "assets/img/bowler.jpg";
 
 function ScoutBowler(props) {
 
@@ -37,8 +28,6 @@ function ScoutBowler(props) {
 
   function predictBowler() {
     axios(
-      // 'http://localhost/viewTicketUser', {
-      // http://b8684ef80b38.ngrok.io/predictBatsman
       ' http://056e244df44a.ngrok.io/predictBowler', {
       method: 'POST',
       data: {
@@ -52,20 +41,11 @@ function ScoutBowler(props) {
       }
     }
     ).then(response => {
-      console.log(response.data);
-      // setShorlistedPlayers(response.data)
       if (response.data.statusCode === "200") {
-        console.log("inside if")
-        // setParkedCarRegNo(response.data.data.ParkedCarRegNo);
-        // setState({ activeTicketCount: response.data.data.length });
         setShorlistedPlayers(response.data.data);
-      }
-      else {
-        // this.loginError.display = "block"
       }
     })
       .catch(error => {
-        // this({ errorMessage: error.message });
         console.error('There was an error!', error);
       });
 
@@ -74,7 +54,6 @@ function ScoutBowler(props) {
   return (
     <>
       <div className="content">
-        {/* <br/> */}
         <Row>
           <Col lg="12">
             <Card>
@@ -98,7 +77,7 @@ function ScoutBowler(props) {
                         </FormGroup>
                       </Col>
                       <br />
-                      
+
                       <Col md={6}>
                         <FormGroup >
                           <Label for="chooseRole" tag="h3">Choose Specific Role</Label>

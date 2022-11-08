@@ -1,21 +1,12 @@
-import React, { useState } from "react";
-import axios from 'axios';
+import { useState } from "react";
 import { Bar } from "react-chartjs-2";
 
 // reactstrap components
 import {
   Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  Label,
-  Form,
+  Card, CardBody, CardHeader, CardTitle, Col, Form,
   FormGroup,
-  Input,
-  Table,
-  Row,
-  Col,
+  Input, Label, Row, Table
 } from "reactstrap";
 
 function BattingEvaluator(props) {
@@ -37,148 +28,101 @@ function BattingEvaluator(props) {
   const [notOuts, setNotOuts] = useState('');
 
   const [topOrder, setTopOrder] = useState({
-    rating:3,
-    Description:'Average Performer'
+    rating: 3,
+    Description: 'Average Performer'
   });
   const [middleOrder, setMiddleOrder] = useState({
-    rating:5,
-    Description:'Excellent Performer'
+    rating: 5,
+    Description: 'Excellent Performer'
   });
   const [finisher, setFinisher] = useState({
-    rating:4,
-    Description:'Good Performer'
+    rating: 4,
+    Description: 'Good Performer'
   });
 
   function evaluateBatsman() {
-  //   axios(
-  //     'http://056e244df44a.ngrok.io/fetchRatings/batsman/1', {
-  //     method: 'POST',
-  //     data: {
-  //       "innings": innings,
-  //       "average": average,
-  //       "strikeRate": strikeRate,
-  //       "fifties": fifties,
-  //       "hundreds": hundreds,
-  //       "fours": fours,
-  //       "sixes": sixes,
-  //       "ducks": ducks,
-  //       "totalRuns": totalRuns,
-  //       "ballsFaced": ballsFaced,
-  //       "notOuts": notOuts
-  //     },
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   }
-  //   ).then(response => {
-  //     console.log(response.data);
-  //     // setShorlistedPlayers(response.data)
-  //     // if (response.data.statusCode == "200") {
-  //     //   console.log("inside if")
-  //       // setParkedCarRegNo(response.data.data.ParkedCarRegNo);
-  //       // setState({ activeTicketCount: response.data.data.length });
-  //       if (response.data.ratings !== -1) {
-  //         setTopOrder(response.data.ratings.topOrder);
-  //         setMiddleOrder(response.data.ratings.middleOrder);
-  //         setFinisher(response.data.ratings.finisher);
-  //         setShowResult(true);
-  //         setShowForm(false);
-  //       }
-  //       else {
-  //       setShowInfoMsg(true);
-  //       setShowResult(false);
-  //       setShowForm(false);
-  //     }
-  //   })
-  //     .catch(error => {
-  //       // this({ errorMessage: error.message });
-  //       console.error('There was an error!', error);
-  //       setShowInfoMsg(true);
-  //       setShowResult(false);
-  //       setShowForm(false);
-  //     });
-          setShowResult(true);
-          setShowForm(false);
+    setShowResult(true);
+    setShowForm(false);
 
   };
 
-  
 
-let ratingChart = {
-  data: (canvas) => {
-    let ctx = canvas.getContext("2d");
 
-    let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+  let ratingChart = {
+    data: (canvas) => {
+      let ctx = canvas.getContext("2d");
 
-    gradientStroke.addColorStop(1, "rgba(72,72,176,0.1)");
-    gradientStroke.addColorStop(0.4, "rgba(72,72,176,0.0)");
-    gradientStroke.addColorStop(0, "rgba(119,52,169,0)"); //purple colors
+      let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 
-    return {
-      labels: ["Top Order", "Middle Order", "Finisher"],
-      datasets: [
-        {
-          label: "Batting Position",
-          fill: true,
-          backgroundColor: gradientStroke,
-          hoverBackgroundColor: gradientStroke,
-          borderColor: "#d048b6",
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          data: [topOrder.rating,middleOrder.rating, finisher.rating],
-        },
-      ],
-    };
-  },
-  options: {
-    maintainAspectRatio: false,
-    legend: {
-      display: false,
+      gradientStroke.addColorStop(1, "rgba(72,72,176,0.1)");
+      gradientStroke.addColorStop(0.4, "rgba(72,72,176,0.0)");
+      gradientStroke.addColorStop(0, "rgba(119,52,169,0)"); //purple colors
+
+      return {
+        labels: ["Top Order", "Middle Order", "Finisher"],
+        datasets: [
+          {
+            label: "Batting Position",
+            fill: true,
+            backgroundColor: gradientStroke,
+            hoverBackgroundColor: gradientStroke,
+            borderColor: "#d048b6",
+            borderWidth: 2,
+            borderDash: [],
+            borderDashOffset: 0.0,
+            data: [topOrder.rating, middleOrder.rating, finisher.rating],
+          },
+        ],
+      };
     },
-    tooltips: {
-      backgroundColor: "#f5f5f5",
-      titleFontColor: "#333",
-      bodyFontColor: "#666",
-      bodySpacing: 4,
-      xPadding: 12,
-      mode: "nearest",
-      intersect: 0,
-      position: "nearest",
+    options: {
+      maintainAspectRatio: false,
+      legend: {
+        display: false,
+      },
+      tooltips: {
+        backgroundColor: "#f5f5f5",
+        titleFontColor: "#333",
+        bodyFontColor: "#666",
+        bodySpacing: 4,
+        xPadding: 12,
+        mode: "nearest",
+        intersect: 0,
+        position: "nearest",
+      },
+      responsive: true,
+      scales: {
+        yAxes: [
+          {
+            gridLines: {
+              drawBorder: false,
+              color: "rgba(225,78,202,0.1)",
+              zeroLineColor: "transparent",
+            },
+            ticks: {
+              suggestedMin: 1,
+              suggestedMax: 5,
+              padding: 10,
+              fontColor: "#ffffff",
+            },
+          },
+        ],
+        xAxes: [
+          {
+            gridLines: {
+              drawBorder: false,
+              color: "rgba(225,78,202,0.1)",
+              zeroLineColor: "transparent",
+            },
+            ticks: {
+              padding: 20,
+              fontColor: "#ffffff",
+            },
+          },
+        ],
+      },
     },
-    responsive: true,
-    scales: {
-      yAxes: [
-        {
-          gridLines: {
-            drawBorder: false,
-            color: "rgba(225,78,202,0.1)",
-            zeroLineColor: "transparent",
-          },
-          ticks: {
-            suggestedMin: 1,
-            suggestedMax: 5,
-            padding: 10,
-            fontColor: "#ffffff",
-          },
-        },
-      ],
-      xAxes: [
-        {
-          gridLines: {
-            drawBorder: false,
-            color: "rgba(225,78,202,0.1)",
-            zeroLineColor: "transparent",
-          },
-          ticks: {
-            padding: 20,
-            fontColor: "#ffffff",
-          },
-        },
-      ],
-    },
-  },
-};
+  };
   return (
     <>
       <div className="content">
@@ -342,12 +286,11 @@ let ratingChart = {
                       size="md"
                       onClick={(e) => {
                         evaluateBatsman();
-                        // setFetchedRatings('[{"topOrderRating":3,"middleOrderRating":5,"finisherRating":4},{"topOrderRating":3,"middleOrderRating":5,"finisherRating":4}]')
                       }
                       }
                     >
                       Evaluate
-                  </Button>
+                    </Button>
                   </div>
                 </Form>
               </CardBody>
@@ -360,9 +303,9 @@ let ratingChart = {
               <CardHeader>
                 <CardTitle tag="h2">Error occurred, try again in sometime!!</CardTitle>
               </CardHeader>
-          </Card>
+            </Card>
           </Col>
-          </div>:null}
+        </div> : null}
         {showResult ? <div>
           <Col lg="12" md="12">
             <Card>
@@ -379,21 +322,21 @@ let ratingChart = {
                     </tr>
                   </thead>
                   <tbody>
-                      <tr>
-                        <td className="text-center">Top Order</td>
-                        <td className="text-center">{topOrder.rating}</td>
-                        <td className="text-center">{topOrder.Description}</td>
-                      </tr>
-                      <tr>
-                        <td className="text-center">Middle Order</td>
-                        <td className="text-center">{middleOrder.rating}</td>
-                        <td className="text-center">{middleOrder.Description}</td>
-                      </tr>
-                      <tr>
-                        <td className="text-center" >Finisher</td>
-                        <td className="text-center">{finisher.rating}</td>
-                        <td className="text-center">{finisher.Description}</td>
-                      </tr>
+                    <tr>
+                      <td className="text-center">Top Order</td>
+                      <td className="text-center">{topOrder.rating}</td>
+                      <td className="text-center">{topOrder.Description}</td>
+                    </tr>
+                    <tr>
+                      <td className="text-center">Middle Order</td>
+                      <td className="text-center">{middleOrder.rating}</td>
+                      <td className="text-center">{middleOrder.Description}</td>
+                    </tr>
+                    <tr>
+                      <td className="text-center" >Finisher</td>
+                      <td className="text-center">{finisher.rating}</td>
+                      <td className="text-center">{finisher.Description}</td>
+                    </tr>
                   </tbody>
                 </Table>
               </CardBody>
@@ -405,7 +348,7 @@ let ratingChart = {
                 <h5 className="card-category">Rating Comparison</h5>
                 <CardTitle tag="h3">
                   <i className="tim-icons icon-delivery-fast text-primary" />{" "}
-                  
+
                 </CardTitle>
               </CardHeader>
               <CardBody>

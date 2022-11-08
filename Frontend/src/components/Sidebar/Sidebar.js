@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 // nodejs library to set properties for components
 import { PropTypes } from "prop-types";
 
@@ -7,11 +7,10 @@ import { PropTypes } from "prop-types";
 import PerfectScrollbar from "perfect-scrollbar";
 
 // reactstrap components
-import { Nav } from "reactstrap";
 import {
-  BackgroundColorContext,
-  // backgroundColors,
+  BackgroundColorContext
 } from "contexts/BackgroundColorContext";
+import { Nav } from "reactstrap";
 
 var ps;
 
@@ -36,9 +35,7 @@ function Sidebar(props) {
       }
     };
   });
-  // const linkOnClick = () => {
-  //   document.documentElement.classList.remove("nav-open");
-  // };
+
   const { routes, rtlActive, logo } = props;
   let logoImg = null;
   let logoText = null;
@@ -92,7 +89,7 @@ function Sidebar(props) {
     }
   }
 
-  const sideBar=['Home', 'Scout', 'How App Works','Player Evaluation','Dashboard']
+  const sideBar = ['Home', 'Scout', 'How App Works', 'Player Evaluation', 'Dashboard']
 
   return (
     <BackgroundColorContext.Consumer>
@@ -108,14 +105,13 @@ function Sidebar(props) {
             <Nav>
               {routes.map((prop, key) => {
                 if (prop.redirect) return null;
-                console.log(prop,key)
+                console.log(prop, key)
                 return (
                   <li
                     className={
                       activeRoute(prop.path) + (prop.pro ? " active-pro" : "")
                     }
-                    style={{color:sideBar.includes(prop.name)?'red':null}}
-                    // onClick={(e)=>e.target.style.color=prop.pro?"red":'green'}
+                    style={{ color: sideBar.includes(prop.name) ? 'red' : null }}
                     key={key}
                   >
                     <NavLink
@@ -130,7 +126,7 @@ function Sidebar(props) {
                   </li>
                 );
               })}
-              
+
             </Nav>
           </div>
         </div>

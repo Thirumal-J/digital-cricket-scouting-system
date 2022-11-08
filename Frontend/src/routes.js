@@ -1,12 +1,9 @@
-// import Dashboard from "views/Dashboard.js";
+import BattingEvaluator from "views/BattingEvaluator.js";
+import BowlingEvaluator from "views/BowlingEvaluator.js";
 import Home from "views/Home.js";
-// import Visualization from "views/Visualization.js"
-// import Scout from "views/Scout.js"
-import BattingEvaluator from "views/BattingEvaluator.js"
-import BowlingEvaluator from "views/BowlingEvaluator.js"
-import ScoutBatsman from "views/ScoutBatsman.js"
-import ScoutBowler from "views/ScoutBowler.js"
-import HowAppWorks from "views/HowAppWorks.js"
+import HowAppWorks from "views/HowAppWorks.js";
+import ScoutBatsman from "views/ScoutBatsman.js";
+import ScoutBowler from "views/ScoutBowler.js";
 
 
 var routes = [
@@ -51,13 +48,6 @@ var routes = [
     icon: "tim-icons icon-sound-wave",
     component: HowAppWorks,
     layout: "/admin",
-  },
-  // {
-  //   path: "/dashboard",
-  //   name: "Dashboard",
-  //   icon: "tim-icons icon-chart-pie-36",
-  //   component: Dashboard,
-  //   layout: "/admin",
-  // },
+  }
 ];
 export default routes;

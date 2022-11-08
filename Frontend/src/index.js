@@ -1,26 +1,18 @@
-import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
 import AdminLayout from "layouts/Admin/Admin.js";
-import DCSSHome from "layouts/Admin/DCSSHome.js";
-
-import "assets/scss/black-dashboard-react.scss";
-import "assets/demo/demo.css";
-import "assets/css/nucleo-icons.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
-import ThemeContextWrapper from "./components/ThemeWrapper/ThemeWrapper";
+import "assets/scss/black-dashboard-react.scss";
 import BackgroundColorWrapper from "./components/BackgroundColorWrapper/BackgroundColorWrapper";
+import ThemeContextWrapper from "./components/ThemeWrapper/ThemeWrapper";
 
 ReactDOM.render(
   <ThemeContextWrapper>
     <BackgroundColorWrapper>
       <BrowserRouter>
         <Switch>
-          {/* <Route path="/" render={(props) => <DCSSHome {...props} />} /> */}
           <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-          {/* <Route path="/rtl" render={(props) => <RTLLayout {...props} />} /> */}
           <Redirect from="/" to="/admin/home" />
         </Switch>
       </BrowserRouter>

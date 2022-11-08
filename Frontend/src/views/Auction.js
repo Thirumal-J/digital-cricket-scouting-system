@@ -11,12 +11,12 @@ import {
 function Auction(props) {
 
   const [chartData, setChartData] = useState({
-      rating5Count: 0,
-      rating4Count: 0,
-      rating3Count: 0,
-      rating2Count: 0,
-      rating1Count: 0,
-      role:""
+    rating5Count: 0,
+    rating4Count: 0,
+    rating3Count: 0,
+    rating2Count: 0,
+    rating1Count: 0,
+    role: ""
   });
 
   let chart = {

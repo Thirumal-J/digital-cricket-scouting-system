@@ -1,23 +1,14 @@
 import axios from 'axios';
-import React, { useState } from "react";
+import { useState } from "react";
 // nodejs library that concatenates classes
 import batsman from "assets/img/batsman.png";
 // react plugin used to create charts
 // reactstrap components
 import {
   Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  CardImg,
-  Label,
-  Form,
+  Card, CardBody, CardHeader, CardImg, CardTitle, Col, Form,
   FormGroup,
-  Input,
-  Table,
-  Row,
-  Col,
+  Input, Label, Row, Table
 } from "reactstrap";
 
 function ScoutBatsman(props) {
@@ -38,7 +29,6 @@ function ScoutBatsman(props) {
 
   function predictBatsman() {
     axios(
-      // 'http://localhost/viewTicketUser', {
       'http://056e244df44a.ngrok.io/predictBatsman', {
       method: 'POST',
       data: {
@@ -53,20 +43,12 @@ function ScoutBatsman(props) {
     }
     ).then(response => {
       console.log(response.data);
-      // setShorlistedPlayers(response.data)
       if (response.data.statusCode === "200") {
-        console.log("inside if")
-        // setParkedCarRegNo(response.data.data.ParkedCarRegNo);
-        // setState({ activeTicketCount: response.data.data.length });
         if (response.data.data !== -1)
           setShorlistedPlayers(response.data.data);
       }
-      else {
-        // this.loginError.display = "block"
-      }
     })
       .catch(error => {
-        // this({ errorMessage: error.message });
         console.error('There was an error!', error);
       });
 
@@ -75,7 +57,6 @@ function ScoutBatsman(props) {
   return (
     <>
       <div className="content">
-        {/* <br /> */}
         <Row>
           <Col lg="12">
             <Card>
@@ -85,12 +66,11 @@ function ScoutBatsman(props) {
               <CardBody>
                 <Row>
                   <Col lg="4" md="6">
-                    <CardImg top width="100%" src={batsman}  alt="Card image cap" />
+                    <CardImg top width="100%" src={batsman} alt="Card image cap" />
                   </Col>
                   <Col lg="8" md="6">
                     <Form>
                       <Col md={6}>
-                        {/* <Image src={logo} roundedCircle /> */}
                       </Col>
                       <Col md={6}>
                         <FormGroup >

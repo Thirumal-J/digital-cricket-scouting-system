@@ -1,23 +1,15 @@
-import React,  { useState } from "react";
 import axios from 'axios';
+import { useState } from "react";
 
 // reactstrap components
 import {
   Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  Label,
-  Form,
+  Card, CardBody, CardHeader, CardTitle, Col, Form,
   FormGroup,
-  Input,
-  Table,
-  Row,
-  Col,
+  Input, Label, Row, Table
 } from "reactstrap";
 
-function BowlingEvaluator(props) {
+function BowlingEvaluator() {
 
   const [showForm, setShowForm] = useState(true);
   const [showResult, setShowResult] = useState(false);
@@ -32,8 +24,8 @@ function BowlingEvaluator(props) {
   const [fiveWickets, setFiveWickets] = useState('');
 
   const [fetchedRatings, setFetchedRatings] = useState({
-    rating:0,
-    Description:''
+    rating: 0,
+    Description: ''
   });
 
   const wicketTaker = "Seems good wicket taker but may leak runs";
@@ -41,10 +33,10 @@ function BowlingEvaluator(props) {
   const [qualities, setQualities] = useState('');
 
   function updateQuality() {
-    if (wicketsTaken>=15) {
+    if (wicketsTaken >= 15) {
       setQualities(wicketTaker);
     }
-    else if (economy<=7){
+    else if (economy <= 7) {
       setQualities(defensive)
     }
     else {
@@ -54,7 +46,6 @@ function BowlingEvaluator(props) {
   function evaluateBowler() {
     updateQuality();
     axios(
-      // 'http://localhost/viewTicketUser', {
       'http://056e244df44a.ngrok.io/fetchRatings/bowler/1', {
       method: 'POST',
       data: {
@@ -72,24 +63,18 @@ function BowlingEvaluator(props) {
     }
     ).then(response => {
       console.log(response.data);
-      // setShorlistedPlayers(response.data)
-      // if (response.data.statusCode == "200") {
-      //   console.log("inside if")
-        // setParkedCarRegNo(response.data.data.ParkedCarRegNo);
-        // setState({ activeTicketCount: response.data.data.length });
-        if (response.data.ratings !== -1) {
-          setFetchedRatings(response.data.ratings)
-          setShowResult(true);
-          setShowForm(false);
-        }
-        else {
+      if (response.data.ratings !== -1) {
+        setFetchedRatings(response.data.ratings)
+        setShowResult(true);
+        setShowForm(false);
+      }
+      else {
         setShowInfoMsg(true);
         setShowResult(false);
         setShowForm(false);
       }
     })
       .catch(error => {
-        // this({ errorMessage: error.message });
         console.error('There was an error!', error);
         setShowInfoMsg(true);
         setShowResult(false);
@@ -100,7 +85,7 @@ function BowlingEvaluator(props) {
 
   return (
     <>
-    <div className="content">
+      <div className="content">
         {showForm ? <Row>
           <Col lg="12" md="12">
             <Card tag="h2">
@@ -108,7 +93,7 @@ function BowlingEvaluator(props) {
                 <CardTitle tag="h2">Bowling Performance Evaluation</CardTitle>
               </CardHeader>
               <CardBody>
-              <Form>
+                <Form>
                   <Row form>
                     <Col md={4}>
                       <FormGroup>
@@ -147,8 +132,8 @@ function BowlingEvaluator(props) {
                       </FormGroup>
                     </Col>
                   </Row>
-                  <br/>
-                  <br/>
+                  <br />
+                  <br />
                   <Row form>
                     <Col md={4}>
                       <FormGroup>
@@ -187,8 +172,8 @@ function BowlingEvaluator(props) {
                       </FormGroup>
                     </Col>
                   </Row>
-                  <br/>
-                  <br/>
+                  <br />
+                  <br />
                   <Row form>
                     <Col md={4}>
                       <FormGroup>
@@ -209,12 +194,11 @@ function BowlingEvaluator(props) {
                       size="md"
                       onClick={(e) => {
                         evaluateBowler();
-                        // setFetchedRatings('[{"topOrderRating":3,"middleOrderRating":5,"finisherRating":4},{"topOrderRating":3,"middleOrderRating":5,"finisherRating":4}]')
                       }
                       }
                     >
                       Evaluate
-                  </Button>
+                    </Button>
                   </div>
                 </Form>
               </CardBody>
@@ -227,9 +211,9 @@ function BowlingEvaluator(props) {
               <CardHeader>
                 <CardTitle tag="h2">Error occurred, try again in sometime!!</CardTitle>
               </CardHeader>
-          </Card>
+            </Card>
           </Col>
-          </div>:null}
+        </div> : null}
         {showResult ? <div>
           <Col lg="12" md="12">
             <Card>
@@ -247,12 +231,12 @@ function BowlingEvaluator(props) {
                     </tr>
                   </thead>
                   <tbody>
-                      <tr>
-                        <td className="text-center">Bowler</td>
-                        <td className="text-center">{fetchedRatings.rating}</td>
-                        <td className="text-center">{fetchedRatings.Description}</td>
-                        <td className="text-center">{qualities}</td>
-                      </tr>
+                    <tr>
+                      <td className="text-center">Bowler</td>
+                      <td className="text-center">{fetchedRatings.rating}</td>
+                      <td className="text-center">{fetchedRatings.Description}</td>
+                      <td className="text-center">{qualities}</td>
+                    </tr>
                   </tbody>
                 </Table>
               </CardBody>

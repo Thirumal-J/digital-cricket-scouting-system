@@ -1,29 +1,10 @@
 import axios from 'axios';
-import React, { useEffect, useState } from "react";
-import classNames from "classnames";
-import { Line, Bar } from "react-chartjs-2";
+import React, { useState } from "react";
 import {
-  Button,
-  ButtonGroup,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  CardImg,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  ButtonDropdown,
-  UncontrolledDropdown,
-  Label,
-  FormGroup,
-  Input,
-  Table,
-  Row,
-  Col,
-  UncontrolledTooltip,
+  Button, ButtonDropdown, ButtonGroup,
+  Card, CardBody, CardHeader, CardTitle, Col, DropdownItem, DropdownMenu, DropdownToggle, FormGroup,
+  Input, Label, Row
 } from "reactstrap";
-import batsman from "assets/img/batsman.png";
 
 function Scout(props) {
   const [bigChartData, setbigChartData] = React.useState("data1");
@@ -34,15 +15,10 @@ function Scout(props) {
   const [showBatsmanOptions, setShowBatsmanOptions] = useState(false);
   const [showBowlerOptions, setShowBowlerOptions] = useState(false);
   const [showAROptions, setShowAROptions] = useState(false);
-  const [battingPosition, setBattingPosition] = useState('');
-  const [minPrice, setminPrice] = useState('20l');
-  const [maxPrice, setmaxPrice] = useState('2c');
-  // const [cSelected, setCSelected] = useState([]);
   const [rSelected, setRSelected] = useState(null);
 
   function predictBatsman() {
     axios(
-      // 'http://localhost/viewTicketUser', {
       ' https://b6965b5ff935.ngrok.io/predictBatsman', {
       method: 'POST',
       data: {
@@ -58,14 +34,12 @@ function Scout(props) {
       console.log(response.data);
     })
       .catch(error => {
-        // this({ errorMessage: error.message });
         console.error('There was an error!', error);
       });
 
   };
 
   const showOptions = (e) => {
-    // e.target.style.background = '#0ef086'
     setShowBatsmanOptions(true);
     setShowBowlerOptions(false);
     setShowAROptions(false);
@@ -95,7 +69,6 @@ function Scout(props) {
             <Card className="card-chart">
               <CardBody tag="h3" className="text-center">
                 <Col lg="12" >
-                  {/* <CardImg bottom width="100%" src="/assets/img/batsman.png" alt="Card image cap" /> */}
                   <Button
                     color="info"
                     size="md"
@@ -110,7 +83,6 @@ function Scout(props) {
           <Col lg="6">
             <Card className="card-chart">
               {showBatsmanOptions ?
-                // <Button color="primary" size="lg">Top Order</Button>
                 <div><CardBody tag="h3" className="text-center text-success">
                   <h5>Select Batsman Position</h5>
                   <ButtonGroup>
@@ -144,7 +116,6 @@ function Scout(props) {
                       <DropdownItem>75L</DropdownItem>
                       <DropdownItem>1C</DropdownItem>
                       <DropdownItem>1.5C</DropdownItem>
-                      {/* <DropdownItem>2C</DropdownItem> */}
                     </DropdownMenu>
                   </ButtonDropdown>
                 </CardBody>
@@ -174,7 +145,6 @@ function Scout(props) {
           <Col lg="8">
             <Card className="card-chart">
               {showBowlerOptions ?
-                // <Button color="primary" size="lg">Top Order</Button>
                 <div><CardBody tag="h3" className="text-center text-success">
                   <h5>Select Batsman Position</h5>
                   <ButtonGroup>
@@ -210,7 +180,6 @@ function Scout(props) {
           <Col lg="8">
             <Card className="card-chart">
               {showAROptions ?
-                // <Button color="primary" size="lg">Top Order</Button>
                 <div><CardBody tag="h3" className="text-center text-success">
                   <h5>Select Batsman Position</h5>
                   <ButtonGroup>

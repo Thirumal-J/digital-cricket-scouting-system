@@ -4,18 +4,9 @@ import classNames from "classnames";
 
 // reactstrap components
 import {
-  Button,
-  Collapse,
-  Input,
-  InputGroup,
-  NavbarBrand,
-  Navbar,
+  Collapse, Container, Input, Modal, ModalHeader,
   // NavLink,
-  Nav,
-  Container,
-  Modal,
-  NavbarToggler,
-  ModalHeader,
+  Nav, Navbar, NavbarBrand, NavbarToggler
 } from "reactstrap";
 
 function AdminNavbar(props) {
@@ -54,8 +45,8 @@ function AdminNavbar(props) {
     <>
       <Navbar className={classNames("navbar-absolute", color)} expand="lg">
         <Container fluid>
-        <div className="navbar-wrapper">
-          <h1>Digital Cricket Scouting System</h1>
+          <div className="navbar-wrapper">
+            <h1>Digital Cricket Scouting System</h1>
           </div>
           <div className="navbar-wrapper">
             <div
